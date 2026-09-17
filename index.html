@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SHARKS BET - Best Gamblers</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
+body{background:#0a0e1a;color:#fff}
+.top{background:#000;padding:12px;display:flex;justify-content:space-between;align-items:center;border-bottom:2px solid #00ff88}
+.logo{color:#00ff88;font-weight:900;font-size:22px;letter-spacing:1px}
+.live{background:#ff0000;padding:3px 8px;border-radius:10px;font-size:11px;animation:blink 1s infinite}
+@keyframes blink{50%{opacity:0.5}}
+.nav{display:flex;gap:5px;padding:10px;background:#111827;overflow-x:auto}
+.nav div{background:#1f2937;padding:8px 15px;border-radius:20px;font-size:13px;white-space:nowrap}
+.nav .active{background:#00ff88;color:#000;font-weight:bold}
+.banner{background:linear-gradient(135deg,#00ff88,#00ccff);color:#000;padding:20px;margin:10px;border-radius:15px;text-align:center}
+.match{background:#151a2a;margin:10px;border-radius:12px;padding:12px;border:1px solid #1f2937}
+.league{font-size:11px;color:#9ca3af}
+.teams{font-weight:bold;margin:8px 0}
+.odds{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.odd{background:#0a0e1a;border:1px solid #2a3441;padding:10px;border-radius:8px;text-align:center;cursor:pointer}
+.odd b{color:#00ff88;display:block;font-size:18px}
+.odd:hover{background:#00ff88;color:#000}
+.odd:hover b{color:#000}
+.sharks-game{background:#151a2a;margin:10px;border-radius:12px;padding:15px;text-align:center;border:2px dashed #00ff88}
+.btn{width:100%;background:#00ff88;color:#000;border:none;padding:14px;border-radius:10px;font-weight:900;font-size:16px;margin-top:10px}
+.betslip{position:fixed;bottom:0;left:0;right:0;background:#00ff88;color:#000;padding:15px;border-radius:20px 20px 0 0;transform:translateY(100%);transition:0.3s}
+.betslip.show{transform:translateY(0)}
+</style>
+</head>
+<body>
+
+<div class="top">
+<div class="logo">🦈 SHARKS BET</div>
+<div style="display:flex;gap:10px;align-items:center">
+<span class="live">● LIVE</span>
+<a href="admin.html" style="color:#00ff88;text-decoration:none;font-size:12px">ADMIN</a>
+</div>
+</div>
+
+<div class="nav">
+<div class="active">⚽ Football</div>
+<div>🏀 Basketball</div>
+<div>🦈 Sharks Aviator</div>
+<div>🎰 Casino</div>
+<div>🔥 Jackpot</div>
+</div>
+
+<div class="banner">
+<h2>Karibu SHARKS!</h2>
+<p>Deposit 50 bob na M-Pesa uanze!</p>
+<p style="font-size:12px;margin-top:5px">0751 768763 - Musau Vincent</p>
+</div>
+
+<div class="sharks-game">
+<h3>🦈 SHARKS CRASH - 500X</h3>
+<p id="multi" style="font-size:50px;font-weight:900;color:#00ff88">1.00x</p>
+<p style="font-size:12px">Panda kabla shark haijakula!</p>
+<button class="btn" onclick="crash()">ANZA KUBET - 50 BOB</button>
+</div>
+
+<div class="match">
+<div class="league">PREMIER LEAGUE - Leo 21:00</div>
+<div class="teams">Manchester City vs Arsenal</div>
+<div class="odds">
+<div class="odd" onclick="bet('Man City 2.10')"><span>1</span><b>2.10</b></div>
+<div class="odd" onclick="bet('Draw 3.25')"><span>X</span><b>3.25</b></div>
+<div class="odd" onclick="bet('Arsenal 2.95')"><span>2</span><b>2.95</b></div>
+</div>
+</div>
+
+<div class="match">
+<div class="league">KPL - Kesho 15:00</div>
+<div class="teams">Gor Mahia vs Shabana</div>
+<div class="odds">
+<div class="odd" onclick="bet('Gor 1.85')"><span>1</span><b>1.85</b></div>
+<div class="odd" onclick="bet('Draw 3.00')"><span>X</span><b>3.00</b></div>
+<div class="odd" onclick="bet('Shabana 4.10')"><span>2</span><b>4.10</b></div>
+</div>
+</div>
+
+<div class="betslip" id="slip">
+<div id="slipText">Betslip 0</div>
+<a id="whatsappBtn" href="#" style="display:block;background:#000;color:#00ff88;text-align:center;padding:12px;border-radius:10px;margin-top:10px;text-decoration:none;font-weight:bold">WEKA BET NA M-PESA</a>
+</div>
+
+<script>
+let bets=[];
+function bet(o){
+  bets.push(o);
+  let s=document.getElementById('slip');
+  s.classList.add('show');
+  document.getElementById('slipText').innerHTML=`🦈 Betslip (${bets.length}) - ${bets.join(' | ')}<br><small>Odds Total: ${(bets.length*1.8).toFixed(2)}</small>`;
+  document.getElementById('whatsappBtn').href=`https://wa.me/254751768763?text=Nataka%20kuweka%20BET:%20${bets.join(', ')}`;
+}
+function crash(){
+  let m=1.00;
+  let int=setInterval(()=>{
+    m+=0.05*Math.random()*2;
+    document.getElementById('multi').innerText=m.toFixed(2)+'x';
+    if(m>5 && Math.random()>0.8){
+      clearInterval(int);
+      document.getElementById('multi').innerHTML=`<span style='color:red'>${m.toFixed(2)}x CRASHED! 🦈</span>`;
+      setTimeout(()=>{document.getElementById('multi').innerText='1.00x'},2000);
+    }
+  },100);
+}
+</script>
+
+<div style="text-align:center;padding:20px;color:#6b7280;font-size:10px">
+18+ | Best Gamblers - Sharks | Cheza Kistaarabu | BCLB License Required<br>
+M-Pesa: 0751768763
+</div>
+
+</body>
+</html>
