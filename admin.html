@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>MTAANI BET - Cheza na Ushinde Rongai</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body{margin:0;background:#0f172a;color:#fff;font-family:Arial}
+.header{background:#1e293b;padding:15px;display:flex;justify-content:space-between;align-items:center}
+.logo{font-weight:bold;color:#22c55e;font-size:20px}
+.btn{background:#22c55e;color:#000;padding:8px 15px;border-radius:20px;text-decoration:none;font-weight:bold}
+.match{background:#1e293b;margin:10px;padding:15px;border-radius:12px}
+.odds{display:flex;gap:10px;margin-top:10px}
+.odd{background:#334155;padding:10px 20px;border-radius:8px;flex:1;text-align:center;cursor:pointer}
+.odd:hover{background:#22c55e;color:#000}
+.betslip{position:fixed;bottom:0;left:0;right:0;background:#22c55e;color:#000;padding:15px;border-radius:20px 20px 0 0}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="logo">MTAANI BET</div>
+  <a class="btn" href="https://wa.me/254751768763?text=Nataka%20account%20ya%20betting">JOIN - 18+</a>
+</div>
+
+<div style="padding:15px">
+  <h3>⚽ Mechi za Leo</h3>
+  
+  <div class="match">
+    <div>Man City vs Arsenal - 19:30</div>
+    <div class="odds">
+      <div class="odd" onclick="addBet('Man City 2.10')">1 - 2.10</div>
+      <div class="odd" onclick="addBet('Draw 3.20')">X - 3.20</div>
+      <div class="odd" onclick="addBet('Arsenal 2.80')">2 - 2.80</div>
+    </div>
+  </div>
+
+  <div class="match">
+    <div>Gor Mahia vs AFC Leopards - 16:00</div>
+    <div class="odds">
+      <div class="odd" onclick="addBet('Gor 1.90')">1 - 1.90</div>
+      <div class="odd" onclick="addBet('Draw 2.90')">X - 2.90</div>
+      <div class="odd" onclick="addBet('AFC 3.40')">2 - 3.40</div>
+    </div>
+  </div>
+
+</div>
+
+<div class="betslip" id="slip">
+  Betslip (0) - Bonyeza odd uanze
+</div>
+
+<script>
+let bets = [];
+function addBet(team){
+  bets.push(team);
+  document.getElementById('slip').innerHTML = `Betslip (${bets.length}) - ${bets.join(', ')} <br><br> <a href='https://wa.me/254751768763?text=Nimebet%20${bets}' style='background:#000;color:#22c55e;padding:10px;border-radius:10px;text-decoration:none;display:block;text-align:center'>WEKA BET VIA WHATSAPP</a>`;
+}
+</script>
+
+<div style="padding:20px;font-size:11px;color:#94a3b8;text-align:center">
+18+ | Cheza Kistaarabu | BCLB Licensed Required | MTAANI NETWORK
+</div>
+
+</body>
+</html>
